@@ -16,8 +16,8 @@ static class ThreadPoolDemo1
         ShowMinThreads();
         ShowMaxThreads();
 
-        ThreadPool.QueueUserWorkItem(new WaitCallback(DoSomething));
-        ThreadPool.QueueUserWorkItem(new WaitCallback(DoSomethingElse));
+        ThreadPool.QueueUserWorkItem(DoSomething);
+        ThreadPool.QueueUserWorkItem(DoSomethingElse);
 
         for (var i = 0; i < 10; i++)
         {
