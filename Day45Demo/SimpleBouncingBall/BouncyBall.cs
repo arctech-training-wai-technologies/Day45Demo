@@ -1,5 +1,4 @@
-﻿using Day45Demo.SimpleBouncingBall;
-using Microsoft.VisualBasic;
+﻿namespace Day45Demo.SimpleBouncingBall;
 
 public class BouncyBall
 {

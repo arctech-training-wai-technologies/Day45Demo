@@ -1,6 +1,6 @@
-﻿namespace Day45Demo;
+﻿namespace Day45Demo.ThreadDemo;
 
-static class ThreadDemo1
+static class ThreadTest
 {
     public static void Test()
     {

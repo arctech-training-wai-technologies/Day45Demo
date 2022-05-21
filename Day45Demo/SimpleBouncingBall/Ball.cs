@@ -1,5 +1,4 @@
-﻿using System.Collections.Specialized;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Day45Demo.SimpleBouncingBall;
 
