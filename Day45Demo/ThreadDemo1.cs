@@ -9,7 +9,7 @@ static class ThreadDemo1
         var t2 = new Thread(DoSomethingElse);
         t2.IsBackground = true;
 
-        t1.Start();
+        t1.Start(10);
         t2.Start();
 
         for (var i = 0; i < 10; i++)
@@ -19,9 +19,10 @@ static class ThreadDemo1
         }
     }
 
-    static void DoSomething()
+    static void DoSomething(object parameter)
     {
-        for (var i = 10; i < 20; i++)
+        int paramValue = (int)parameter;
+        for (var i = paramValue; i < paramValue + 10; i++)
         {
             Console.WriteLine(i);
             Thread.Sleep(20);

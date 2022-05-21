@@ -9,4 +9,7 @@ using Day45Demo;
 
 //ThreadDemo1.Test();
 
-BouncyBall.Test();
+//BouncyBall.Test();
+//BouncyBall.Test2();
+
+ThreadPoolDemo1.Test();

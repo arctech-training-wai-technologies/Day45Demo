@@ -6,9 +6,9 @@ namespace Day45Demo.SimpleBouncingBall;
 public class Ball
 {
     private int _x, _y;
-    private const char drawCharacter = '@';
+    private const char DrawCharacter = '@';
 
-    private bool isMovingAhead = true;
+    private bool _isMovingAhead = true;
 
     public Ball(int x, int y)
     {
@@ -19,19 +19,15 @@ public class Ball
     public void Show()
     {
         Console.SetCursorPosition(_x, _y);
-        Console.Write(drawCharacter);
+        Console.Write(DrawCharacter);
     }
 
     public void Hide()
     {
         Console.SetCursorPosition(_x, _y);
-        Console.ForegroundColor = ConsoleColor.Black;
-        Console.BackgroundColor = ConsoleColor.Black;
         Console.Write(' ');
         Console.ResetColor();
     }
-
-
 
     public void MoveRight()
     {
@@ -63,41 +59,51 @@ public class Ball
 
     public void BounceHorizontally()
     {
-        isMovingAhead = true;
+        _isMovingAhead = true;
 
         while (true)
         {
-            if(isMovingAhead)
+            if (_isMovingAhead)
                 MoveRight();
             else
                 MoveLeft();
 
-            if (_x <= 1 || _x >= Console.WindowWidth - 1)
-                isMovingAhead = !isMovingAhead;
+            if (IsGoingOutOfHorizontalBoundary())
+                _isMovingAhead = !_isMovingAhead;
 
-            Debug.Print($"(x,y)=({_x},{_y}) isMovingRight={isMovingAhead}");
+            Debug.Print($"(x,y)=({_x},{_y}) isMovingAhead={_isMovingAhead}");
 
-            Thread.Sleep(20);
+            Thread.Sleep(100);
         }
     }
 
     public void BounceVertically()
     {
-        isMovingAhead = true;
+        _isMovingAhead = true;
 
         while (true)
         {
-            if (isMovingAhead)
+            if (_isMovingAhead)
                 MoveDown();
             else
                 MoveUp();
 
-            if (_y <= 1 || _y >= Console.WindowHeight - 1)
-                isMovingAhead = !isMovingAhead;
+            if (IsGoingOutOfVerticalBoundary())
+                _isMovingAhead = !_isMovingAhead;
 
-            Debug.Print($"(x,y)=({_x},{_y}) isMovingRight={isMovingAhead}");
+            Debug.Print($"(x,y)=({_x},{_y}) isMovingAhead={_isMovingAhead}");
 
-            Thread.Sleep(20);
+            Thread.Sleep(100);
         }
+    }
+
+    private bool IsGoingOutOfVerticalBoundary()
+    {
+        return _y <= 1 || _y >= Console.WindowHeight - 1;
+    }
+
+    private bool IsGoingOutOfHorizontalBoundary()
+    {
+        return _x <= 1 || _x >= Console.WindowWidth - 1;
     }
 }
